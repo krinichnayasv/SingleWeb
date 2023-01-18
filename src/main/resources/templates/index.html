@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List</title>
+    <script src="/js/jquery-3.4.0.min.js"></script>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/styles2.css">
+</head>
+<body>
+    <div id="business-form">
+        <form>
+            <h3>Добавление дела</h3>
+            <label>Что надо сделать:</label>
+            <input type="text" name="name" value="">
+            <label>Когда:</label>
+            <input type="text" name="date" value="">
+            <hr>
+            <button id="save-business">Сохранить</button>
+        </form>
+    </div>
+    <div id="business-delete-form">
+        <form>
+            <h3>Удаление дела</h3>
+            <label>Номер дела:</label>
+            <input type="text" name="id" value="">
+            <hr>
+            <button id="delete-business">Сохранить</button>
+        </form>
+    </div>
+    <div id="businesses-delete-form">
+        <form>
+            <h3>Удаление списка дел</h3>
+            <hr>
+            <button id="delete-all">Удалить все!</button>
+        </form>
+    </div>
+    <h1>Список дел (<span th:text="${businessesCount}">0</span>)</h1>
+    <button id="show-add-business-form">Добавить дело</button>
+    <br><br>
+    <button id="show-delete-business-form">Удалить дело</button>
+    <br><br>
+    <button id="show-delete-all-form">Удалить весь список</button>
+    <br><br>
+    <div id="business-list">
+        <div th:each="business : ${businesses}">
+            <a href="#" class="business-link" th:attr="data-id=${business.id}" th:text="${business.name}"></a>
+        </div>
+    </div>
+    <p th:text="${someParameter}"></p>
+</body>
+</html>
